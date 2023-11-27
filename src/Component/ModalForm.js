@@ -8,7 +8,7 @@ const Backdrop = () => {
 };
 
 
-export default function ModalForm({closeModal}) {
+export default function ModalForm({closeModal, time}) {
 	return (
 		<>
 			{ReactDOM.createPortal(
@@ -16,7 +16,7 @@ export default function ModalForm({closeModal}) {
 				document.getElementById("Form-modal-backdrop")
                 )}
                 {ReactDOM.createPortal(
-                    <UserForm closeModal={closeModal}/>,
+                    <UserForm closeModal={closeModal} time={time}/>,
                     document.getElementById("Form-Modal")
                 )}
 		</>

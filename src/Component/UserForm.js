@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-function UserForm({ closeModal }) {
+function UserForm({ closeModal, time }) {
 	const numberRef = useRef();
+
+	console.log(time);
 
 	const numberInputOnChange = (event) => {
 		const inputValue = event.target.value;
@@ -14,11 +16,18 @@ function UserForm({ closeModal }) {
 	async function formSubmitHandler(event) {
 		event.preventDefault();
 
-        console.log('run')
-        
-        const res = await fetch("https://cerly-8cfc9-default-rtdb.firebaseio.com/Times.json")
-        const data = await res.json();
-        console.log(data)
+		const Data = new FormData(event.target);
+		const formData = {
+			time: time,
+			formData: {
+				name: Data.get("fullName"),
+				phoneNum: Data.get("phoneNum"),
+			},
+		};
+
+		console.log(formData);
+		alert('نوبت شما ثبت شد')
+		closeModal();
 
 	}
 
@@ -33,6 +42,7 @@ function UserForm({ closeModal }) {
 			</span>
 			<input
 				type="text"
+				name="fullName"
 				className="w-full border py-3 px-3 border-[#ccc] placeholder-[#ccc] outline-none focus-visible:outline-none focus-visible:border-purple focus-visible:rounded-lg focus-visible:text-purple focus-visible:placeholder-purple"
 				placeholder="نام و نام خانوادگی"
 			/>
@@ -40,6 +50,7 @@ function UserForm({ closeModal }) {
 				ref={numberRef}
 				onChange={numberInputOnChange}
 				type="number"
+				name="phoneNum"
 				className="w-full border py-3 px-3 border-[#ccc] placeholder-[#ccc] outline-none focus-visible:outline-none focus-visible:border-purple focus-visible:rounded-lg focus-visible:text-purple focus-visible:placeholder-purple"
 				placeholder="شماره تماس"
 			/>

@@ -1,11 +1,16 @@
 import React from "react";
 
-export default function ({openModal, time}) {
+export default function ({openModal, getTime ,time}) {
+	const onClickHandler = () => {
+		openModal();
+		getTime(time);
+	}
+
 	return (
-		<div className="btn-outline-purple flex gap-2" onClick={openModal}>
+		<button className={`${time.isTacken ? "btn-outline-disable" : "btn-outline-purple"} flex gap-2`} onClick={onClickHandler} disabled={time.isTacken}>
 			<p>{time.start}</p>
 			<p>الی</p>
 			<p>{time.end}</p>
-		</div>
+		</button>
 	);
 }

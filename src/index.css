@@ -105,6 +105,18 @@ h1 span {
     background: #ad58f4;
 }
 
+.btn-outline-disable {
+    color: #a9a9a9;
+    padding: .8rem 1.8rem;
+
+    border: 1px solid #a9a9a9;
+    border-radius: 25px;
+
+    box-shadow: none;
+    background-color: #fff;    
+}
+
+
 input {
     border-radius: 5px 25px 5px 25px;
     transition: all .3s linear;

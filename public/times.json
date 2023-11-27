@@ -1,30 +1,30 @@
 [
     {
-        "Data": "1402/9/5",
+        "Date": "1402/9/5",
         "start": "12:00",
         "end": "12:50",
         "isTacken": false
     },
     {
-        "Data": "1402/9/5",
+        "Date": "1402/9/5",
         "start": "13:00",
         "end": "13:50",
         "isTacken": false
     },
     {
-        "Data": "1402/9/5",
+        "Date": "1402/9/5",
         "start": "14:00",
         "end": "14:50",
         "isTacken": false
     },
     {
-        "Data": "1402/9/5",
+        "Date": "1402/9/5",
         "start": "15:00",
         "end": "15:50",
         "isTacken": false
     },
     {
-        "Data": "1402/9/5",
+        "Date": "1402/9/5",
         "start": "15:00",
         "end": "15:50",
         "isTacken": true
