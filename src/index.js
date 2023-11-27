@@ -8,9 +8,9 @@ import { ShowModalContextProvider } from "./context/ShowModalContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<ShowModalContextProvider>
-			<App />
-		</ShowModalContextProvider>
+			<ShowModalContextProvider>
+				<App />
+			</ShowModalContextProvider>
 	</React.StrictMode>
 );
 
