@@ -10,6 +10,8 @@ import svg from "../assest/img/qqquad (1).svg";
 export default function Layout() {
 	const [date, setDate] = useState("");
 	const [TimesList, setTimesList] = useState([]);
+	const url = './times.json';
+	
 	var selectedTime;
 
 	const showModal_CTX = useContext(ShowModalContext);
@@ -19,7 +21,14 @@ export default function Layout() {
 	};
 
 	const fetchApi = () => {
-		return fetch("./times.json")
+		const body = {date: date}
+		return fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(body)
+		})
 			.then((res) => res.json())
 			.then((data) => setTimesList(data));
 	};
@@ -30,7 +39,6 @@ export default function Layout() {
 
 	const getTime = (time) => {
 		selectedTime = time
-		console.log(time)
 	}
 
 	return (

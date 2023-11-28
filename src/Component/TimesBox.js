@@ -13,6 +13,7 @@ export default function TimesBox({ openModal, timesList, getTime }) {
 				{timesList.map((time) => {
 					return (
 						<TimeBox
+							key={time.id}
 							openModal={openModal}
 							time={time}
 							getTime={getTime}

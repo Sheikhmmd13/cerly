@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 
 function UserForm({ closeModal, time }) {
 	const numberRef = useRef();
+	const [status, setStatus] = useState();
+	const url = "./times.json";
 
 	console.log(time);
 
@@ -18,17 +20,28 @@ function UserForm({ closeModal, time }) {
 
 		const Data = new FormData(event.target);
 		const formData = {
-			time: time,
+			id: time.id,
 			formData: {
 				name: Data.get("fullName"),
 				phoneNum: Data.get("phoneNum"),
 			},
 		};
 
-		console.log(formData);
-		alert('نوبت شما ثبت شد')
-		closeModal();
+		const res = fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formData),
+		}).then((res) => res);
 
+		if ((await res).ok) {
+			alert("نوبت شما با موفقیت ثبت شد");
+			closeModal();
+		} else {
+			alert('مشکلی رخ داده است')
+			closeModal();
+		}
 	}
 
 	return (
