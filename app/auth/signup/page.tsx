@@ -1,4 +1,3 @@
-import Form from "@/components/Form";
 import Signup from "@/components/Form/Signup";
 
 function page() {
