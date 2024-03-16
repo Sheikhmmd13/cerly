@@ -8,19 +8,19 @@ import { DeletePassedTime } from "@/lib/dataBase/timeActions";
 const myFont = localFont({
 	src: [
 		{
-			path: "./DanaFaNum-Light.woff",
+			path: "assets/fonts/woff/DanaFaNum-light.woff",
 			weight: "300",
 		},
 		{
-			path: "./DanaFaNum-Regular.woff",
+			path: "assets/fonts/woff/DanaFaNum-Regular.woff",
 			weight: "500",
 		},
 		{
-			path: "./DanaFaNum-Bold.woff",
+			path: "assets/fonts/woff/DanaFaNum-Bold.woff",
 			weight: "700",
 		},
 		{
-			path: "./DanaFaNum-Black.woff",
+			path: "assets/fonts/woff/DanaFaNum-Black.woff",
 			weight: "900",
 		},
 	],
