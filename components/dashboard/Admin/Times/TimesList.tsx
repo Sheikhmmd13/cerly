@@ -55,7 +55,7 @@ async function TimesList() {
 							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
 						</header>
 						<main className="w-full flex justify-start flex-wrap gap-5">
-							{timeInfo.map(async (time: any) => {
+							{timeInfo.map(async (time: any, index:number) => {
 								const ConvertedUserInfo =
 									await ConvertUserData(
 										time,
@@ -67,6 +67,7 @@ async function TimesList() {
 								};
 								return (
 									<TimeCard
+									key={index + time.time.toString()}
 										time={
 											convertedTimeData
 										}
