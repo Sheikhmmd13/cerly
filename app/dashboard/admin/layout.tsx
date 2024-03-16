@@ -13,7 +13,6 @@ export default function RootLayout({
 			<main className="w-full max-w-[1400px] min-h-dvh flex-center">
                         {children}
 			</main>
-			
 		</section>
 	);
 }
