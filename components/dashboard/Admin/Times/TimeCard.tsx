@@ -11,7 +11,6 @@ type TimeCardProps = {
 	userInfo: { firstName: string; lastName: string; phoneNum: string };
 };
 function TimeCard({ time, userInfo }: TimeCardProps) {
-	console.log(time._id)
 	return (
 		<section className="w-[200px] h-[300px] bg-[#252525] border-l-2 border-l-[#cc9900] rounded-xl shadow-xl flex flex-col justify-between p-4 text-[#f1f1f1]">
 			<div className="w-full flex-center flex-col gap-2 text">

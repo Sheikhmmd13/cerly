@@ -1,13 +1,9 @@
 "use server";
 
-import React, { useEffect, useState } from "react";
-import { AddTimeType, getAllTimes } from "@/lib/dataBase/timeActions";
-import { getUserInfo } from "@/lib/dataBase/userActions";
-import { userInfo } from "os";
+import React from "react";
+import { getAllTimes } from "@/lib/dataBase/timeActions";
 import { ConnectToCollection } from "@/lib/dataBase";
 import { ObjectId } from "mongodb";
-import { DeleteTimeAction } from "@/lib/Server Actions/DeleteTimeAction";
-import { SubmitButton } from "@/components/Times List Section/TimeBox";
 import TimeCard from "./TimeCard";
 
 async function TimesList() {
@@ -67,7 +63,7 @@ async function TimesList() {
 								};
 								return (
 									<TimeCard
-									key={index + time.time.toString()}
+									key={index + convertedTimeData.time}
 										time={
 											convertedTimeData
 										}
