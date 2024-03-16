@@ -78,7 +78,7 @@ async function TimesList() {
 									// 	key={index}
 									// 	time={time}
 									// />
-									<p>{time.time}</p>
+									<p key={index}>{time.time}</p>
 								),
 							)}
 						</main>
