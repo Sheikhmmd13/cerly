@@ -6,11 +6,8 @@ import { ConnectToCollection } from "@/lib/dataBase";
 import { ObjectId } from "mongodb";
 import TimeCard from "./TimeCard";
 
-async function TimesList() {
-	const Times = await getAllTimes();
+async function AsyncTimeCard({ time }: { time: any }) {
 	const UserCollection = await ConnectToCollection("users");
-
-	Times?.sort((a, b) => (a.date > b.date ? 1 : -1));
 
 	async function ConvertUserData(time: any) {
 		let UserDataFromDb;
@@ -28,6 +25,25 @@ async function TimesList() {
 		};
 	}
 
+	const ConvertedUserInfo = await ConvertUserData(time);
+	const convertedTimeData = {
+		_id: time._id.toString(),
+		time: time.time,
+		userId: time.userId,
+	};
+	return (
+		<TimeCard
+			time={convertedTimeData}
+			userInfo={ConvertedUserInfo}
+		/>
+	);
+}
+
+async function TimesList() {
+	const Times = await getAllTimes();
+
+	Times?.sort((a, b) => (a.date > b.date ? 1 : -1));
+
 	//todo: analyz this
 	const groupedData = Times?.reduce((acc: any, obj: any) => {
 		const date = obj.date;
@@ -40,7 +56,7 @@ async function TimesList() {
 		<section className="flex-1 flex flex-wrap justify-start items-start gap-5">
 			{Object.keys(groupedData).map((date, index) => {
 				const timeInfo = groupedData[date];
-				console.log(timeInfo)
+				console.log(timeInfo);
 				return (
 					<section
 						key={index + timeInfo[0]}
@@ -52,28 +68,17 @@ async function TimesList() {
 							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
 						</header>
 						<main className="w-full flex justify-start flex-wrap gap-5">
-							{timeInfo.map(async (time: any, index:number) => {
-								const ConvertedUserInfo =
-									await ConvertUserData(
-										time,
-									);
-								const convertedTimeData = {
-									_id: time._id.toString(),
-									time: time.time,
-									userId: time.userId,
-								};
-								return (
-									<TimeCard
-									key={index + convertedTimeData.time}
-										time={
-											convertedTimeData
-										}
-										userInfo={
-											ConvertedUserInfo
-										}
+							{timeInfo.map(
+								async (
+									time: any,
+									index: number,
+								) => (
+									<AsyncTimeCard
+										key={index}
+										time={time}
 									/>
-								);
-							})}
+								),
+							)}
 						</main>
 					</section>
 				);
