@@ -1,3 +1,5 @@
+'use server'
+
 // import TimesContainer from "@/components/Times List Section/TimesContainer";
 import { TimesList } from "@/config/Times";
 import React, { Suspense, useEffect, useState } from "react";

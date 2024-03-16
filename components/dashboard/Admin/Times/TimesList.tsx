@@ -6,38 +6,38 @@ import { ConnectToCollection } from "@/lib/dataBase";
 import { ObjectId } from "mongodb";
 import TimeCard from "./TimeCard";
 
-async function AsyncTimeCard({ time }: { time: any }) {
-	const UserCollection = await ConnectToCollection("users");
+// async function AsyncTimeCard({ time }: { time: any }) {
+// 	const UserCollection = await ConnectToCollection("users");
 
-	async function ConvertUserData(time: any) {
-		let UserDataFromDb;
+// 	async function ConvertUserData(time: any) {
+// 		let UserDataFromDb;
 
-		time.userId !== ""
-			? (UserDataFromDb = await UserCollection.findOne({
-					_id: new ObjectId(time.userId),
-			  }))
-			: null;
+// 		time.userId !== ""
+// 			? (UserDataFromDb = await UserCollection.findOne({
+// 					_id: new ObjectId(time.userId),
+// 			  }))
+// 			: null;
 
-		return {
-			firstName: UserDataFromDb?.firstName as string,
-			lastName: UserDataFromDb?.lastName as string,
-			phoneNum: UserDataFromDb?.phoneNum as string,
-		};
-	}
+// 		return {
+// 			firstName: UserDataFromDb?.firstName as string,
+// 			lastName: UserDataFromDb?.lastName as string,
+// 			phoneNum: UserDataFromDb?.phoneNum as string,
+// 		};
+// 	}
 
-	const ConvertedUserInfo = await ConvertUserData(time);
-	const convertedTimeData = {
-		// _id: time._id.toString(),
-		time: time.time,
-		userId: time.userId,
-	};
-	return (
-		<TimeCard
-			time={convertedTimeData}
-			userInfo={ConvertedUserInfo}
-		/>
-	);
-}
+// 	const ConvertedUserInfo = await ConvertUserData(time);
+// 	const convertedTimeData = {
+// 		// _id: time._id.toString(),
+// 		time: time.time,
+// 		userId: time.userId,
+// 	};
+// 	return (
+// 		<TimeCard
+// 			time={convertedTimeData}
+// 			userInfo={ConvertedUserInfo}
+// 		/>
+// 	);
+// }
 
 async function TimesList() {
 	const Times = await getAllTimes();
@@ -68,7 +68,7 @@ async function TimesList() {
 							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
 						</header>
 						<main className="w-full flex justify-start flex-wrap gap-5">
-							{timeInfo.map(
+							{/* {timeInfo.map(
 								async (
 									time: any,
 									index: number,
@@ -78,7 +78,7 @@ async function TimesList() {
 										time={time}
 									/>
 								),
-							)}
+							)} */}
 						</main>
 					</section>
 				);
