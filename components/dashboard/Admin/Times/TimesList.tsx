@@ -54,35 +54,37 @@ async function TimesList() {
 
 	return (
 		<section className="flex-1 flex flex-wrap justify-start items-start gap-5">
-			{Object.keys(groupedData).map((date, index) => {
-				const timeInfo = groupedData[date];
-				console.log(timeInfo);
-				return (
-					<section
-						key={index + timeInfo[0]}
-						className="w-full flex-center flex-col gap-7">
-						<header className="w-full flex justify-start items-center gap-5">
-							<h2 className="text-[#cc9900] text-2xl font-bold">
-								{timeInfo[0].solarDate}
-							</h2>
-							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
-						</header>
-						<main className="w-full flex justify-start flex-wrap gap-5">
-							{/* {timeInfo.map(
-								async (
-									time: any,
-									index: number,
-								) => (
-									<AsyncTimeCard
-										key={index}
-										time={time}
-									/>
-								),
-							)} */}
-						</main>
-					</section>
-				);
-			})}
+			<p>helolo</p>
+			{
+			// Object.keys(groupedData).map((date, index) => {
+			// 	const timeInfo = groupedData[date];
+			// 	return (
+			// 		<section
+			// 			key={index + timeInfo[0]}
+			// 			className="w-full flex-center flex-col gap-7">
+			// 			<header className="w-full flex justify-start items-center gap-5">
+			// 				<h2 className="text-[#cc9900] text-2xl font-bold">
+			// 					{timeInfo[0].solarDate}
+			// 				</h2>
+			// 				<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
+			// 			</header>
+			// 			<main className="w-full flex justify-start flex-wrap gap-5">
+			// 				{/* {timeInfo.map(
+			// 					async (
+			// 						time: any,
+			// 						index: number,
+			// 					) => (
+			// 						<AsyncTimeCard
+			// 							key={index}
+			// 							time={time}
+			// 						/>
+			// 					),
+			// 				)} */}
+			// 			</main>
+			// 		</section>
+			// 	);
+			// })
+			}
 		</section>
 	);
 }
