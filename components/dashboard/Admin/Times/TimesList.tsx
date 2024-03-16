@@ -1,7 +1,7 @@
 "use server";
 
 import React from "react";
-import { getAllTimes } from "@/lib/dataBase/timeActions";
+import { AddTimeType, getAllTimes } from "@/lib/dataBase/timeActions";
 import { ConnectToCollection } from "@/lib/dataBase";
 import { ObjectId } from "mongodb";
 import TimeCard from "./TimeCard";
@@ -70,8 +70,8 @@ async function TimesList() {
 						</header>
 						<main className="w-full flex justify-start flex-wrap gap-5">
 							{timeInfo.map(
-								async (
-									time: any,
+								 (
+									time: AddTimeType,
 									index: number,
 								) => (
 									// <AsyncTimeCard
