@@ -40,6 +40,7 @@ async function TimesList() {
 		<section className="flex-1 flex flex-wrap justify-start items-start gap-5">
 			{Object.keys(groupedData).map((date, index) => {
 				const timeInfo = groupedData[date];
+				console.log(timeInfo)
 				return (
 					<section
 						key={index + timeInfo[0]}

@@ -12,7 +12,9 @@ export type CreateUserType = {
 async function CreateUser(userData: CreateUserType) {
 	const UsersCollection = await ConnectToCollection("users");
 	try {
-		return await UsersCollection.insertOne(userData);
+		const result = await UsersCollection.insertOne(userData);
+		CloseConnection();
+		return result;
 	} catch (err) {
 		console.log(err);
 	}
@@ -22,14 +24,14 @@ async function CheckUserExistWithPhoneNum(phoneNum: string) {
 	const UsersCollection = await ConnectToCollection("users");
 
 	try {
-		return await UsersCollection.findOne({
+		const result =  await UsersCollection.findOne({
 			phoneNum: phoneNum,
 		});
+		CloseConnection();
+		return result;
 	} catch (err) {
 		console.log(err);
-	} finally {
-		CloseConnection();
-	}
+	} 
 }
 
 export async function getUserInfo(userId: string) {
@@ -40,11 +42,11 @@ export async function getUserInfo(userId: string) {
 		const userInfo = await UsersCollection.findOne({
 			_id: new ObjectId(userId),
 		});
+		CloseConnection();
+
 		return userInfo;
 	} catch (err) {
 		console.log(err);
-	} finally {
-		CloseConnection();
 	}
 }
 

@@ -18,14 +18,14 @@ export async function AddTimeToDb(time: AddTimeType) {
 
 		if (!isTimeExists) {
 			const result = await TimeCollection.insertOne(time);
+			CloseConnection();
 			return result;
 		} else {
+			CloseConnection();
 			return null;
 		}
 	} catch (err) {
 		console.log(err);
-	} finally {
-		CloseConnection();
 	}
 }
 
@@ -33,12 +33,11 @@ export async function getAllTimes() {
 	const TimeCollection = await ConnectToCollection("Times");
 	try {
 		const AllTimes = await TimeCollection.find({}).toArray();
+		CloseConnection();
 		return AllTimes;
 	} catch (err) {
 		console.log(err);
-	} finally {
-		CloseConnection();
-	}
+	} 
 }
 
 export async function GetOneTimeByUserid(
@@ -52,11 +51,10 @@ export async function GetOneTimeByUserid(
 			{ date: date, time: time },
 			{ $set: { userId: userId } },
 		);
+		CloseConnection();
 		return result;
 	} catch (err) {
 		console.log(err);
-	} finally {
-		CloseConnection();
 	}
 }
 
@@ -68,9 +66,8 @@ export async function DeletePassedTime() {
 
 	try {
 		await TimeCollection.deleteMany(filter);
+		CloseConnection();
 	} catch (err) {
 		console.log(err);
-	} finally {
-		CloseConnection();
 	}
 }
