@@ -1,3 +1,7 @@
+export type NavItem = {
+	name: string;
+	path: string;
+};
 export type serviceItem = {
 	title: string;
 	description: string;
