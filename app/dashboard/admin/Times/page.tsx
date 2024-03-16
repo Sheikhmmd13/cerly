@@ -7,7 +7,7 @@ function page() {
 		<section className="w-full flex justify-between items-start flex-col-reverse md:flex-row-reverse gap-10">
 			<div className="flex-1 max-md:pl-5">
 				{/* the problem is here */}
-				{/* <TimesList /> */}
+				<TimesList />
 			</div>
 			<TimeManagement />
 		</section>

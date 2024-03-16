@@ -6,38 +6,38 @@ import { ConnectToCollection } from "@/lib/dataBase";
 import { ObjectId } from "mongodb";
 import TimeCard from "./TimeCard";
 
-// async function AsyncTimeCard({ time }: { time: any }) {
-// 	const UserCollection = await ConnectToCollection("users");
+async function AsyncTimeCard({ time }: { time: any }) {
+	const UserCollection = await ConnectToCollection("users");
 
-// 	async function ConvertUserData(time: any) {
-// 		let UserDataFromDb;
+	async function ConvertUserData(time: any) {
+		let UserDataFromDb;
 
-// 		time.userId !== ""
-// 			? (UserDataFromDb = await UserCollection.findOne({
-// 					_id: new ObjectId(time.userId),
-// 			  }))
-// 			: null;
+		time.userId !== ""
+			? (UserDataFromDb = await UserCollection.findOne({
+					_id: new ObjectId(time.userId),
+			  }))
+			: null;
 
-// 		return {
-// 			firstName: UserDataFromDb?.firstName as string,
-// 			lastName: UserDataFromDb?.lastName as string,
-// 			phoneNum: UserDataFromDb?.phoneNum as string,
-// 		};
-// 	}
+		return {
+			firstName: UserDataFromDb?.firstName as string,
+			lastName: UserDataFromDb?.lastName as string,
+			phoneNum: UserDataFromDb?.phoneNum as string,
+		};
+	}
 
-// 	const ConvertedUserInfo = await ConvertUserData(time);
-// 	const convertedTimeData = {
-// 		// _id: time._id.toString(),
-// 		time: time.time,
-// 		userId: time.userId,
-// 	};
-// 	return (
-// 		<TimeCard
-// 			time={convertedTimeData}
-// 			userInfo={ConvertedUserInfo}
-// 		/>
-// 	);
-// }
+	const ConvertedUserInfo = await ConvertUserData(time);
+	const convertedTimeData = {
+		// _id: time._id.toString(),
+		time: time.time,
+		userId: time.userId,
+	};
+	return (
+		<TimeCard
+			time={convertedTimeData}
+			userInfo={ConvertedUserInfo}
+		/>
+	);
+}
 
 async function TimesList() {
 	const Times = await getAllTimes();
@@ -56,34 +56,34 @@ async function TimesList() {
 		<section className="flex-1 flex flex-wrap justify-start items-start gap-5">
 			<p>helolo</p>
 			{
-			// Object.keys(groupedData).map((date, index) => {
-			// 	const timeInfo = groupedData[date];
-			// 	return (
-			// 		<section
-			// 			key={index + timeInfo[0]}
-			// 			className="w-full flex-center flex-col gap-7">
-			// 			<header className="w-full flex justify-start items-center gap-5">
-			// 				<h2 className="text-[#cc9900] text-2xl font-bold">
-			// 					{timeInfo[0].solarDate}
-			// 				</h2>
-			// 				<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
-			// 			</header>
-			// 			<main className="w-full flex justify-start flex-wrap gap-5">
-			// 				{/* {timeInfo.map(
-			// 					async (
-			// 						time: any,
-			// 						index: number,
-			// 					) => (
-			// 						<AsyncTimeCard
-			// 							key={index}
-			// 							time={time}
-			// 						/>
-			// 					),
-			// 				)} */}
-			// 			</main>
-			// 		</section>
-			// 	);
-			// })
+			Object.keys(groupedData).map((date, index) => {
+				const timeInfo = groupedData[date];
+				return (
+					<section
+						key={index + timeInfo[0]}
+						className="w-full flex-center flex-col gap-7">
+						<header className="w-full flex justify-start items-center gap-5">
+							<h2 className="text-[#cc9900] text-2xl font-bold">
+								{timeInfo[0].solarDate}
+							</h2>
+							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
+						</header>
+						<main className="w-full flex justify-start flex-wrap gap-5">
+							{timeInfo.map(
+								async (
+									time: any,
+									index: number,
+								) => (
+									<AsyncTimeCard
+										key={index}
+										time={time}
+									/>
+								),
+							)}
+						</main>
+					</section>
+				);
+			})
 			}
 		</section>
 	);
