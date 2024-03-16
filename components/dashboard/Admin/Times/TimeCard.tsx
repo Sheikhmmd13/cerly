@@ -44,7 +44,7 @@ function TimeCard({ time, userInfo }: TimeCardProps) {
 				<input
 					type="text"
 					name="timeId"
-					// defaultValue={time._id}
+					defaultValue={time._id}
 					hidden
 				/>
 				<SubmitButton

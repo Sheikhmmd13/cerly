@@ -27,7 +27,7 @@ async function AsyncTimeCard({ time }: { time: any }) {
 
 	const ConvertedUserInfo = await ConvertUserData(time);
 	const convertedTimeData = {
-		// _id: time._id.toString(),
+		_id: time._id.toString(),
 		time: time.time,
 		userId: time.userId,
 	};
@@ -74,10 +74,11 @@ async function TimesList() {
 									time: any,
 									index: number,
 								) => (
-									<AsyncTimeCard
-										key={index}
-										time={time}
-									/>
+									// <AsyncTimeCard
+									// 	key={index}
+									// 	time={time}
+									// />
+									<p>{time.time}</p>
 								),
 							)}
 						</main>
