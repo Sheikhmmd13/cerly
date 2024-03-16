@@ -79,7 +79,7 @@ function TimeBox({ date, time, userId, index }: TimeBoxProps) {
 	return (
 		<motion.section
 			ref={scope}
-			className={`w-[180px] max-sm:w-[45%] h-[120px] bg-[${
+			className={`w-[180px] h-[120px] bg-[${
 				!isBooked ? "#cc9900" : "#252525"
 			}] rounded-lg shadow-2xl py-5 ${
 				isBooked ? "flex-center" : "flex-between"
