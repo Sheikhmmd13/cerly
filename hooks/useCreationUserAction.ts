@@ -1,8 +1,9 @@
 "use client";
 
-import { type errorState } from "@/components/Form";
-import { CreateUserAction } from "@/lib/Server Actions/CreateUserAction";
+
+import { errorState } from "@/components/Form/Signup";
 import { SignupFormSchema } from "@/lib/FormSchemas";
+import { CreateUser } from "@/lib/dataBase/userActions";
 import { useRef, useState } from "react";
 
 type useCreationUserActionProps = {
@@ -31,7 +32,7 @@ async function useCreationUserAction({formData, setErrors}: useCreationUserActio
 	} else {
             //Create User in DB
 			//todo: Check user is create acount before or not?
-            await CreateUserAction(userData);
+            await CreateUser(userData);
 		return true
       }
 }
