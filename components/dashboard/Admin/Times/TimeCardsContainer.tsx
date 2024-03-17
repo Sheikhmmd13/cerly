@@ -1,11 +1,17 @@
+'use server'
+
 import { AddTimeType, getAllTimes } from "@/lib/dataBase/timeActions";
 import React from "react";
 import TimeCard from "./TimeCard";
-import { ObjectId } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { ConnectToCollection } from "@/lib/dataBase";
 
+const mongo_uri = process.env.MONGO_URI!.toString()
+const client = new MongoClient(mongo_uri)
+
+
 async function AsyncTimeCard({ time }: { time: any }) {
-	const UserCollection = await ConnectToCollection("users");
+	const UserCollection = (await client.connect()).db().collection("users");
 
 	async function ConvertUserData(time: any) {
 		let UserDataFromDb;
@@ -33,7 +39,7 @@ async function AsyncTimeCard({ time }: { time: any }) {
 }
 
 async function TimeCardsContainer() {
-	const Times = await getAllTimes();
+	const Times = await (await client.connect()).db().collection("Times").find({}).toArray();
 
 	Times?.sort((a, b) => (a.date > b.date ? 1 : -1));
 
