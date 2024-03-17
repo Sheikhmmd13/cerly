@@ -11,7 +11,7 @@ const client = new MongoClient(mongo_uri)
 
 
 async function AsyncTimeCard({ time }: { time: any }) {
-	const UserCollection = await ConnectToCollection("users");
+	const UserCollection = (await client.connect()).db().collection("users");
 
 	async function ConvertUserData(time: any) {
 		let UserDataFromDb;
@@ -39,7 +39,7 @@ async function AsyncTimeCard({ time }: { time: any }) {
 }
 
 async function TimeCardsContainer() {
-	const Times = await getAllTimes();
+	const Times = await(await client.connect()).db().collection("Times").find({}).toArray();
 
 	Times?.sort((a, b) => (a.date > b.date ? 1 : -1));
 
