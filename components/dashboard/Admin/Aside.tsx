@@ -45,21 +45,25 @@ function Aside() {
 		setActiveIndex(index);
 	};
 
-	const NavStartHoverdHandler = () => {
+	const NavOpenHandler = () => {
 		setIsExpend(true);
 	};
 
-	const NavEndHoverdHandler = () => {
+	const NavCloseHandler = () => {
 		setIsExpend(false);
 	};
+	const NavToggelHandler = () => {
+		setIsExpend(prevState => !prevState)
+	}
 
 	return (
 		<motion.nav
 			{...sideAnimation("right")}
 			className={styles.adminPanel__nav}
 			data-isexpend={isExpend ? "true" : "false"}
-			onHoverStart={NavStartHoverdHandler}
-			onHoverEnd={NavEndHoverdHandler}>
+			onHoverStart={NavOpenHandler}
+			onHoverEnd={NavCloseHandler}
+			onClick={NavToggelHandler}>
 			<ul className="adminPanel_aside__ul">
 				{AdminNavItems.map((navItem, index) => (
 					<motion.li

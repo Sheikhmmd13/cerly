@@ -8,7 +8,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-            <section className="w-[100%] relative flex-center pr-[65px]">
+            <section className="w-[100%] relative flex items-start justify-start pr-[65px]">
                   <Aside />
 			<main className="w-full max-w-[1400px] min-h-dvh flex-center">
                         {children}
