@@ -64,7 +64,7 @@ async function TimeCardsContainer() {
 							</h2>
 							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
 						</header>
-						<main className="w-full flex justify-start flex-wrap gap-5">
+						<main className="w-full flex justify-start flex-wrap md:gap-5 gap-1">
 							{timeInfo.map(
 								(
 									time: AddTimeType,
