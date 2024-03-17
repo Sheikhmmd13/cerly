@@ -56,71 +56,43 @@ const AdminNavItems: AdminNavItem[] = [
 ];
 
 function Aside() {
-	const ClickHandler = (index: number) => {};
 
 	return (
-		// <motion.nav
-		// 	{...sideAnimation("right")}>
-		// 	<ul className="adminPanel_aside__ul">
-		// 		{AdminNavItems.map((navItem, index) => (
-		// 			<motion.li
-		// 				initial={{ x: 100, opacity: 0 }}
-		// 				animate={{ x: 0, opacity: 1 }}
-		// 				transition={{
-		// 					type: "spring",
-		// 					delay: index * 0.2,
-		// 				}}
-		// 				key={navItem.name + index}
-		// 				data-active={
-		// 					activeIndex === index
-		// 						? "true"
-		// 						: "false"
-		// 				}
-		// 				onClick={() => {
-		// 					ClickHandler(index);
-		// 				}}>
-		// 				{navItem.icon}
-
-		// 				<Link
-		// 					href={navItem.path}
-		// 					className="link__name">
-		// 					{navItem.name}
-		// 				</Link>
-		// 			</motion.li>
-		// 		))}
-		// 	</ul>
-		// 	<h2>لوگو</h2>
-		// </motion.nav>
 		<Sheet>
 			<SheetTrigger>
 				<HambergerMenu color="#f1f1f1" size={30} />
 			</SheetTrigger>
-			<SheetContent
-				className={`${styles.adminPanel__nav} glassmorphism text-white`}>
+			<SheetContent className={`${styles.adminPanel__nav} glassmorphism text-white`}>
 				<SheetHeader>
 					<SheetDescription>
 						<ul className="adminPanel_aside__ul">
 							{AdminNavItems.map(
 								(navItem, index) => (
-									<li
-										// initial={{
-										// 	x: 100,
-										// 	opacity: 0,
-										// }}
-										// animate={{
-										// 	x: 0,
-										// 	opacity: 1,
-										// }}
-										// transition={{
-										// 	type: "spring",
-										// 	delay:
-										// 		index *
-										// 		0.2,
-										// }}
+									<motion.li
+										initial={{
+											x: 100,
+											opacity: 0,
+										}}
+										animate={{
+											x: 0,
+											opacity: 1,
+										}}
+										transition={{
+											type: "spring",
+											delay:
+												index *
+												0.2,
+										}}
 										key={navItem.name}>
 										{navItem.icon}
-										<Link href="">;laskdjf;lsadkjf;lasdkjf;</Link>
-									</li>
+										<Link
+											href={
+												navItem.path
+											}
+											className="link__name">
+											{navItem.name}
+										</Link>{" "}
+									</motion.li>
 								),
 							)}
 						</ul>

@@ -1,4 +1,3 @@
-
 .adminPanel__nav h2 {
       font-size: 18px;
       font-weight: bold;
@@ -41,14 +40,8 @@
 .adminPanel__nav ul li a {
       color: #f1f1f1;
 
-      width: fit-content;
-      min-width: 130px;
-      height: 5px;
+      font-size: 16px;
 
-      position: absolute;
-      left: -50%;
-
-      opacity: 0;
       transition: all .15s;
       transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -61,20 +54,20 @@
 
       position: absolute;
       bottom: 0;
-      left: 65%;
-      transform: translateX(-65%);
+      right: 0;
 
       transition: all .2s;
       transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       background: #cc9900;
 }
 
-.adminPanel__nav ul li:hover {
+.adminPanel__nav ul li:hover a {
       color: #cc9900;
 }
 
+
 .adminPanel__nav ul li:hover::before {
-      width: 80%;
+      width: 60%;
 }
 
 
@@ -93,5 +86,7 @@
 }
 
 .adminPanel__nav ul li:hover svg {
+      color: #cc9900;
+
       animation: myAnim .5s linear 0s 1 normal forwards;
 }
