@@ -39,7 +39,7 @@ function TimeManagement() {
 	];
 
 	return (
-		<div className="w-[400px] h-fit bg-[#252525] rounded-lg max-md:my-10 py-16">
+		<div className="w-full md:w-[400px] h-fit bg-[#252525] rounded-lg max-md:my-10 py-16">
 			<h2 className="text-center text-2xl font-bold text-[#f1f1f1]">
 				افزودن نوبت
 			</h2>

@@ -10,7 +10,6 @@ export async function DeleteTimeAction(formData: FormData) {
       try {
             // delete time
             const result = await TimesCollection.deleteOne({_id: new ObjectId(timeId)});
-            console.log(result)
             revalidatePath("/dashboard/admin/Times")
 
       } catch(err) {

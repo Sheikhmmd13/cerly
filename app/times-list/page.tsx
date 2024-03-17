@@ -25,7 +25,7 @@ async function page() {
 					const timeInfo = groupedData[date];
 
 					return (
-						<section key={index} className="w-full flex-center flex-col gap-5">
+						<section key={index} className="w-full flex-center flex-col gap-5 mb-5">
 							<header className="w-full flex justify-start items-center gap-5">
 								<h2 className="text-[#cc9900] text-2xl font-bold">
 									{timeInfo[0].solarDate}

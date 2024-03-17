@@ -57,14 +57,14 @@ async function TimeCardsContainer() {
 				return (
 					<section
 						key={index + timeInfo[0]}
-						className="w-full flex-center flex-col gap-7">
+						className="w-full flex-center flex-col gap-7 mb-10">
 						<header className="w-full flex justify-start items-center gap-5">
 							<h2 className="text-[#cc9900] text-2xl font-bold">
 								{timeInfo[0].solarDate}
 							</h2>
 							<div className="line h-[2px] rounded-full flex-1 shadow-lg bg-[#cc9900]"></div>
 						</header>
-						<main className="w-full flex justify-start flex-wrap md:gap-5 gap-1">
+						<main className="w-full flex justify-between flex-wrap md:gap-5 gap-1">
 							{timeInfo.map(
 								(
 									time: AddTimeType,
