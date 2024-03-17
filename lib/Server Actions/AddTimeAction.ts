@@ -109,7 +109,6 @@ export async function AddTimeAction(prevState: any, formData: FormData) {
 					successMsg = null;
 				} else {
 					revalidatePath("/dashboard/admin/Times");
-					revalidatePath("/times-list");
 					successMsg = "نوبت شما با موفقیت ثبت شد";
 				}
 			}

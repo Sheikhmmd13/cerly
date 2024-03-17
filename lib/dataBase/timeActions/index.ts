@@ -18,14 +18,14 @@ export async function AddTimeToDb(time: AddTimeType) {
 
 		if (!isTimeExists) {
 			const result = await TimeCollection.insertOne(time);
-			CloseConnection();
 			return result;
 		} else {
-			CloseConnection();
 			return null;
 		}
 	} catch (err) {
 		console.log(err);
+	} finally {
+		CloseConnection();
 	}
 }
 
