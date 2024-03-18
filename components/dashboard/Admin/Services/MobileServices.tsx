@@ -46,7 +46,7 @@ async function MobileServices() {
 						<AccordionItem
 							key={index}
 							value={`item-${index}`}
-							className="w-[90%] mx-auto border-[#404040]" >
+							className="w-[90%] mx-auto border-[#404040]">
 							<AccordionTrigger className="w-full hover:no-underline text-[#cc9900] text-[13px]">
 								سرویس های{" "}
 								{categoryItem.category ===
@@ -61,6 +61,7 @@ async function MobileServices() {
 								{categoryItem.services.map(
 									(service, index) => (
 										<ServiceAdminCard
+											key={index}
 											service={
 												service
 											}
