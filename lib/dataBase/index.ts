@@ -5,7 +5,7 @@ const mongo_uri = process.env.MONGO_URI;
 
 let client: MongoClient | null = null;
 
-export async function ConnectToCollection(collectionName: "Times" | "users"){
+export async function ConnectToCollection(collectionName: "Times" | "users" | "services"){
 	if(!client) {
 		client = new MongoClient(mongo_uri!.toString())
 		await client.connect();

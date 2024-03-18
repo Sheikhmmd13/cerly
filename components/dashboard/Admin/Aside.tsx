@@ -38,13 +38,8 @@ const AdminNavItems: AdminNavItem[] = [
 		icon: <User size={23} />,
 	},
 	{
-		name: "لیست سرویس ها",
-		path: "/dashboard/admin",
-		icon: <Reserve size={23} />,
-	},
-	{
 		name: "مدیریت سرویس ها",
-		path: "/dashboard/admin",
+		path: "/dashboard/admin/Services",
 		icon: <Ankr size={23} />,
 	},
 	{
