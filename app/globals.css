@@ -124,6 +124,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+
 .input {
   @apply bg-transparent text-[#999999] border-[1px] border-[#404040] rounded-lg py-3 px-2 text-sm focus:outline-none placeholder:text-[#999999] focus:border-[#cc9900] focus:text-[#cc9900] transition focus:placeholder:text-[#cc9900]
 }
