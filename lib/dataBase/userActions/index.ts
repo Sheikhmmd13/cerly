@@ -11,8 +11,11 @@ export type CreateUserType = {
 };
 async function CreateUser(userData: CreateUserType) {
 	const UsersCollection = await ConnectToCollection("users");
+	const UserInfo: CreateUserType = {
+		...userData, phoneNum: ("0" + userData.phoneNum)
+	}
 	try {
-		const result = await UsersCollection.insertOne(userData);
+		const result = await UsersCollection.insertOne(UserInfo);
 		return result;
 	} catch (err) {
 		console.log(err);
