@@ -11,19 +11,34 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { SubmitButton } from "@/components/Times List Section/TimeBox";
+import { AddService } from "@/lib/Server Actions/AddService";
+import { useFormState } from "react-dom";
+
+let intialState: { message: string; isError: boolean } = {message: "", isError: false};
 
 function AddServiceForm() {
+	const [state, formAction] = useFormState(AddService, intialState);
+
 	return (
 		<section className="w-[90%] mx-auto flex-center flex-col">
 			<h2 className="text-white text-xl font-bold mb-5">
 				فرم افزودن سرویس
 			</h2>
 
-			<form className="w-full flex flex-col gap-5">
-				<input type="text" className="input w-full" placeholder="عنوان سرویس" required />
+			<form
+				action={formAction}
+				className="w-full flex flex-col gap-5">
 				<input
 					type="text"
-                              className="input w-full" 
+					className="input w-full"
+					name="title"
+					placeholder="عنوان سرویس"
+					required
+				/>
+				<input
+					type="text"
+					className="input w-full"
+					name="description"
 					placeholder="توضیحات سرویس"
 					required
 				/>
@@ -31,6 +46,7 @@ function AddServiceForm() {
 					<input
 						type="number"
 						className="input flex-1"
+						name="price"
 						placeholder="به تومن قیمت سرویس"
 						required
 					/>
@@ -39,7 +55,9 @@ function AddServiceForm() {
 							<SelectValue placeholder="دسته بندی" />
 						</SelectTrigger>
 						<SelectContent className="w-[120px] bg-[#252525] text-[#999999] border-[#404040]">
-							<SelectItem value="hairCut" className="">
+							<SelectItem
+								value="hairCut"
+								className="">
 								اصلاح مو
 							</SelectItem>
 							<SelectItem value="beardCut">
@@ -51,7 +69,20 @@ function AddServiceForm() {
 						</SelectContent>
 					</Select>
 				</div>
-				<SubmitButton title="افزودن" className="button-submit"/>
+				<SubmitButton
+					title="افزودن"
+					className="button-submit flex-row-reverse gap-1"
+				/>
+				{state.message !== "" && (
+					<small
+						className={`text-center ${
+							state.isError
+								? "text-red-500"
+								: "text-green-500"
+						}`}>
+						{state.message}
+					</small>
+				)}
 			</form>
 		</section>
 	);

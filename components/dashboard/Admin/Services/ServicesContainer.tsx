@@ -14,7 +14,7 @@ function ServicesContainer({
 }) {
 	return (
 		<Tabs
-			defaultValue="add-service"
+			defaultValue="hairCut"
 			className="w-[95%] max-w-[550px] mx-auto">
 			<div className="w-full flex-center gap-4">
 				{groupedService?.map((categoryItem, index) => (
@@ -42,7 +42,7 @@ function ServicesContainer({
 					<TabsContent
 						value={categoryItem.category}
 						key={categoryItem.category}
-						className="w-full h-fit flex-center">
+						className="w-full h-fit flex-center gap-3">
 						{categoryItem.services.length !== 0 ? (
 							categoryItem.services.map(
 								(service, index) => (

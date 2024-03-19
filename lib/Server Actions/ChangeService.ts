@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 import { CloseConnection, ConnectToCollection } from "../dataBase";
 import { revalidatePath } from "next/cache";
 
-let result: {isSubmitted: boolean};
+let result: { isSubmitted: boolean, message:string };
 export async function ChangeService(prevState: any, formData: FormData) {
 
 	const _id = new ObjectId(formData.get("serviceId") as string);
@@ -17,25 +17,26 @@ export async function ChangeService(prevState: any, formData: FormData) {
 
 	const ServicesCollection = await ConnectToCollection("services");
 	try {
-		ServicesCollection.updateOne(
+		await ServicesCollection.updateOne(
 			{ _id: _id },
 			{
 				$set: {
 					title: serviceInfo.title,
 					description: serviceInfo.description,
 					price: serviceInfo.price,
-				},
+				}
 			},
 		);
-            revalidatePath("/")
-            revalidatePath("/dashboard/admin/Services");
+
             
-            result = {isSubmitted: true}
+            result = {isSubmitted: true, message:"تغییرات ثبت شد"}
 
 	} catch (err) {
 		console.log(err);
-            result = {isSubmitted: false}
+            result = {isSubmitted: false, message: "خطا! دوباره امتحان کنید"}
 	} finally {
+		revalidatePath("/dashboard/admin/Services");
+            revalidatePath("/")
             CloseConnection();
             return result;
       }
