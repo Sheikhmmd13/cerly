@@ -108,28 +108,28 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 	}, [state.isSubmitted]);
 
 	return (
-		<section className="w-[95%] mx-auto border border-[#353535] rounded-lg p-1 h-28 flex flex-row-reverse justify-between items-center py-1 px-2">
+		<section className="w-[95%] mx-auto border border-[#353535] rounded-lg p-1 h-28 flex flex-row-reverse justify-between items-center py-1 px-2 gap-1">
 			<form
 				action={formAction}
-				className="w-1/2 flex flex-row-reverse items-start gap-3">
-				<div className="flex flex-col justify-start items-start gap-1">
+				className="flex-1 flex flex-row-reverse items-start gap-3">
+				<div className="w-1/2 flex flex-col justify-start items-start gap-1">
 					<input
 						type="text"
-						className={`bg-transparent text-end w-[130px] py-2 px-2 font-bold text-[#f1f1f1] text-[16px] rounded-md border border-transparent  focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
+						className={`bg-transparent text-end max-w-[130px] w-full py-2 px-2 font-bold text-[#f1f1f1] text-[16px] rounded-md border border-transparent  focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
 						disabled={!isEditting}
 						name="title"
 						value={service.title}
 					/>
 					<input
 						type="text"
-						className={`bg-transparent w-[130px] text-end  py-2 px-2 text-[#f1f1f195] text-[12px] rounded-sm border border-transparent  focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
+						className={`bg-transparent max-w-[130px] text-end  w-full py-2 px-2 text-[#f1f1f195] text-[12px] rounded-sm border border-transparent  focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
 						disabled={!isEditting}
 						name="description"
 						value={service.description}
 					/>
 				</div>
-				<div className="h-full flex flex-col justify-start items-start gap-1">
-					<div className="flex-center flex-row-reverse">
+				<div className="w-1/2 h-full flex flex-col justify-start items-start gap-1">
+					<div className=" w-full flex-center flex-row-reverse">
 						<label
 							htmlFor="price"
 							className="text-[#cc9900] ml-2">
@@ -137,7 +137,7 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 						</label>
 						<input
 							type="text"
-							className={`bg-transparent text-[#cc9900] w-[110px] text-end py-2 px-2 rounded-sm border border-transparent focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
+							className={`bg-transparent text-[#cc9900] max-w-[110px] w-full text-end py-2 px-2 rounded-sm border border-transparent focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
 							disabled={!isEditting}
 							name="price"
 							id="price"
@@ -173,7 +173,7 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 					)}
 				</div>
 			</form>
-			<div className="icons flex-center flex-col gap-2">
+			<div className="w-[55px] icons flex-center flex-col gap-2">
 				<span
 					className="bg-[#101010] flex-center shadow-lg w-[45px] h-[45px] rounded-full cursor-pointer border border-transparent hover:border-[#cc9900] transition-all"
 					onClick={() => {
