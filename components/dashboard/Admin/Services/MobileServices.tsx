@@ -11,6 +11,7 @@ import {
 } from "@/lib/dataBase/ServiceActions";
 import { WithId } from "mongodb";
 import ServiceAdminCard from "./ServiceAdminCard";
+import ServicesContainer from "./ServicesContainer";
 
 async function MobileServices() {
 	const Services = await GetAllServices();
@@ -40,7 +41,9 @@ async function MobileServices() {
 	);
 	return (
 		<section className="w-dvw">
-			<Accordion type="multiple" className="">
+                  <ServicesContainer groupedService={groupedService}/>
+
+			{/* <Accordion type="multiple" className="">
 				{groupedService?.map((categoryItem, index) => {
 					return (
 						<AccordionItem
@@ -65,6 +68,9 @@ async function MobileServices() {
 											service={
 												service
 											}
+											category={
+												categoryItem.category
+											}
 										/>
 									),
 								)}
@@ -72,7 +78,7 @@ async function MobileServices() {
 						</AccordionItem>
 					);
 				})}
-			</Accordion>
+			</Accordion> */}
 		</section>
 	);
 }
