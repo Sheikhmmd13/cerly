@@ -12,10 +12,10 @@ function ServicesContainer({
 	return (
 		<Tabs
 			defaultValue="hairCut"
-			className="w-[95%] mx-auto">
+			className="w-[95%] max-w-[550px] mx-auto">
 			<div className="w-full flex-center gap-4">
 				{groupedService?.map((categoryItem, index) => (
-					<TabsList className="w-[100px]" key={categoryItem.category}>
+					<TabsList className="flex-1" key={categoryItem.category}>
 						<TabsTrigger value={categoryItem.category}>
 							{categoryItem.category === "hairCut"
 								? "اصلاح مو"
@@ -27,9 +27,9 @@ function ServicesContainer({
 					</TabsList>
 				))}
 			</div>
-			<div className="flex-center mt-3">
+			<div className="mt-6 w-full h-[400px] border border-[#353535] rounded-lg">
                   {groupedService?.map((categoryItem, index) => (
-				<TabsContent value={categoryItem.category} key={categoryItem.category}>
+				<TabsContent value={categoryItem.category} key={categoryItem.category} className="w-full h-full flex-center">
 					{categoryItem.category}
 				</TabsContent>
 			))}
