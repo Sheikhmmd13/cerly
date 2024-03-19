@@ -56,8 +56,10 @@ async function Authentication(formData: FormData) {
 			exisitingUser.phoneNum === AdminPhoneNum
 		) {
 			setSessionCookie("Cerly__user_isAdmin", userData);
+			redirect("/");
 		} else if (exisitingUser.password === userData.password) {
 			setSessionCookie("Cerly__is_Auth", userData);
+			redirect("/");
 		} else {
 			errors["password"] = { message: "رمز عبور نادرست است" };
 		}
