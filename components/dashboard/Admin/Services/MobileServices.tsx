@@ -42,43 +42,6 @@ async function MobileServices() {
 	return (
 		<section className="w-dvw">
                   <ServicesContainer groupedService={groupedService}/>
-
-			{/* <Accordion type="multiple" className="">
-				{groupedService?.map((categoryItem, index) => {
-					return (
-						<AccordionItem
-							key={index}
-							value={`item-${index}`}
-							className="w-[90%] mx-auto border-[#404040]">
-							<AccordionTrigger className="w-full hover:no-underline text-[#cc9900] text-[13px]">
-								سرویس های{" "}
-								{categoryItem.category ===
-								"hairCut"
-									? "اصلاح مو"
-									: categoryItem.category ===
-									  "beardCut"
-									? "اصلاح ریش"
-									: "رنگ مو"}
-							</AccordionTrigger>
-							<AccordionContent className="w-full text-[#cc9900]">
-								{categoryItem.services.map(
-									(service, index) => (
-										<ServiceAdminCard
-											key={index}
-											service={
-												service
-											}
-											category={
-												categoryItem.category
-											}
-										/>
-									),
-								)}
-							</AccordionContent>
-						</AccordionItem>
-					);
-				})}
-			</Accordion> */}
 		</section>
 	);
 }

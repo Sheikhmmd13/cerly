@@ -1,9 +1,5 @@
-"use client";
-
 import HeroSection from "@/components/Hero Section/HeroSection";
 import ServicesSection from "@/components/Services Section/ServicesSection";
-import { model } from "mongoose";
-import { useEffect } from "react";
 
 export default function Home() {
 		return (

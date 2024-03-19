@@ -111,7 +111,7 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 		<section className="w-[95%] mx-auto border border-[#353535] rounded-lg p-1 h-28 flex flex-row-reverse justify-between items-center py-1 px-2">
 			<form
 				action={formAction}
-				className="w-3/4 flex flex-row-reverse items-start gap-3">
+				className="w-1/2 flex flex-row-reverse items-start gap-3">
 				<div className="flex flex-col justify-start items-start gap-1">
 					<input
 						type="text"
