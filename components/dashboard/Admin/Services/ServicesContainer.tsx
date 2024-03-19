@@ -27,9 +27,9 @@ function ServicesContainer({
 					</TabsList>
 				))}
 			</div>
-			<div className="mt-6 w-full h-[400px] border border-[#353535] rounded-lg">
+			<div className="mt-6 w-full h-[465px] border border-[#353535] rounded-lg overflow-x-hidden overflow-y-scroll">
                   {groupedService?.map((categoryItem, index) => (
-				<TabsContent value={categoryItem.category} key={categoryItem.category} className="w-full h-full flex-center">
+				<TabsContent value={categoryItem.category} key={categoryItem.category} className="w-full h-fit flex-center">
 					{categoryItem.category}
 				</TabsContent>
 			))}
