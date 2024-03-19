@@ -15,7 +15,7 @@ function ServicesContainer({
 			className="w-[95%] mx-auto">
 			<div className="w-full flex-center gap-4">
 				{groupedService?.map((categoryItem, index) => (
-					<TabsList className="w-[100px]">
+					<TabsList className="w-[100px]" key={categoryItem.category}>
 						<TabsTrigger value={categoryItem.category}>
 							{categoryItem.category === "hairCut"
 								? "اصلاح مو"
@@ -29,7 +29,7 @@ function ServicesContainer({
 			</div>
 			<div className="flex-center mt-3">
                   {groupedService?.map((categoryItem, index) => (
-				<TabsContent value={categoryItem.category}>
+				<TabsContent value={categoryItem.category} key={categoryItem.category}>
 					{categoryItem.category}
 				</TabsContent>
 			))}
