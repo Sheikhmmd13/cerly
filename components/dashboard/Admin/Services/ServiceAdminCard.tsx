@@ -118,14 +118,14 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 						className={`bg-transparent text-end max-w-[130px] w-full py-2 px-2 font-bold text-[#f1f1f1] text-[16px] rounded-md border border-transparent  focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
 						disabled={!isEditting}
 						name="title"
-						value={service.title}
+						defaultValue={service.title}
 					/>
 					<input
 						type="text"
 						className={`bg-transparent max-w-[130px] text-end  w-full py-2 px-2 text-[#f1f1f195] text-[12px] rounded-sm border border-transparent  focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
 						disabled={!isEditting}
 						name="description"
-						value={service.description}
+						defaultValue={service.description}
 					/>
 				</div>
 				<div className="w-1/2 h-full flex flex-col justify-start items-start gap-1">
@@ -136,7 +136,7 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 							:قیمت
 						</label>
 						<input
-							type="text"
+							type="number"
 							className={`bg-transparent text-[#cc9900] max-w-[110px] w-full text-end py-2 px-2 rounded-sm border border-transparent focus:ring-0 focus:outline-none focus:border-[#cc9900] focus-visible:text-[#cc9900] focus:rounded-xl transition-all`}
 							disabled={!isEditting}
 							name="price"
