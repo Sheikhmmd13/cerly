@@ -173,7 +173,7 @@ function ServiceAdminCard({ service, category }: ServiceCardProps) {
 					)}
 				</div>
 			</form>
-			<div className="icons flex-center flex-row-reverse gap-2">
+			<div className="icons flex-center flex-col gap-2">
 				<span
 					className="bg-[#101010] flex-center shadow-lg w-[45px] h-[45px] rounded-full cursor-pointer border border-transparent hover:border-[#cc9900] transition-all"
 					onClick={() => {
