@@ -40,7 +40,7 @@ function Login() {
 							type={
 								input.name === "password"
 									? "password"
-									: "text"
+									: "number"
 							}
 							className="input w-full"
 							errorMsg={

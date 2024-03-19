@@ -62,6 +62,9 @@ function Signup() {
 							type={
 								input.name === "password"
 									? "password"
+									: input.name ===
+									  "phoneNum"
+									? "number"
 									: "text"
 							}
 							errorMsg={
@@ -70,7 +73,7 @@ function Signup() {
 						/>
 					</div>
 				))}
-				<SubmitBtn title="ثبت نام"/>
+				<SubmitBtn title="ثبت نام" />
 				<p className="text-sm text-center text-[#757575]">
 					قبلا ثبت نام کردید؟
 					<Link
