@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ServiceAdminCard from "./ServiceAdminCard";
 import { AddCircle } from "iconsax-react";
 import AddServiceForm from "./AddServiceForm";
+import { motion } from "framer-motion";
 
 function ServicesContainer({
 	groupedService,
@@ -16,7 +17,7 @@ function ServicesContainer({
 		<Tabs
 			defaultValue="hairCut"
 			className="w-[95%] max-w-[550px] mx-auto">
-			<div className="w-full flex-center gap-4">
+			<div className="w-[95%] mx-auto flex-center gap-4">
 				{groupedService?.map((categoryItem, index) => (
 					<TabsList
 						className="flex-1"
@@ -33,7 +34,7 @@ function ServicesContainer({
 				))}
 				<TabsList className="flex-1">
 					<TabsTrigger value="add-service">
-						اضافه کردن سرویس
+						افزودن سرویس
 					</TabsTrigger>
 				</TabsList>
 			</div>
@@ -45,14 +46,32 @@ function ServicesContainer({
 						className="w-full h-fit flex-center gap-3">
 						{categoryItem.services.length !== 0 ? (
 							categoryItem.services.map(
-								(service, index) => (
-									<ServiceAdminCard
-										key={index}
-										service={service}
-										category={
-											categoryItem.category
-										}
-									/>
+								(service, index: number) => (
+									<motion.div
+										initial={{
+											x: -100,
+											opacity: 0,
+										}}
+										animate={{
+											x: 0,
+											opacity: 1,
+										}}
+										transition={{
+											type: "spring",
+											delay:
+												index *
+												0.25,
+										}}>
+										<ServiceAdminCard
+											key={index}
+											service={
+												service
+											}
+											category={
+												categoryItem.category
+											}
+										/>
+									</motion.div>
 								),
 							)
 						) : (
@@ -62,9 +81,11 @@ function ServicesContainer({
 						)}
 					</TabsContent>
 				))}
-                        <TabsContent value="add-service" className="w-full h-[90%] flex-center">
-                              <AddServiceForm />
-                        </TabsContent>
+				<TabsContent
+					value="add-service"
+					className="w-full h-[90%] flex-center">
+					<AddServiceForm />
+				</TabsContent>
 			</div>
 		</Tabs>
 	);

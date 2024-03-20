@@ -26,10 +26,6 @@ const NavItems: NavItem[] = [
 		path: "/times-list",
 	},
 	{
-		name: "درباره من",
-		path: "/about",
-	},
-	{
 		name: "",
 		path: "",
 	},
@@ -42,11 +38,11 @@ async function Header() {
 	const AdminSession = await getCookies("admin");
 
 	if (userSession !== null || AdminSession !== null) {
-		NavItems[3] =
+		NavItems[2] =
 			AdminSession !== null
 				? {
 						name: "پنل ادمین",
-						path: "/dashboard/admin",
+						path: "/dashboard/admin/Times",
 				  }
 				: {
 						name: "پنل کاربری",
@@ -55,7 +51,7 @@ async function Header() {
 
 		showingLogoutBtn = true;
 	} else {
-		NavItems[3] = {
+		NavItems[2] = {
 			name: "ورود",
 			path: "/auth/login",
 		};

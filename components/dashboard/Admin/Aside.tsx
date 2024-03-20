@@ -33,11 +33,6 @@ type AdminNavItem = {
 };
 const AdminNavItems: AdminNavItem[] = [
 	{
-		name: "لیست کاربر ها",
-		path: "/dashboard/admin",
-		icon: <User size={23} />,
-	},
-	{
 		name: "مدیریت سرویس ها",
 		path: "/dashboard/admin/Services",
 		icon: <Ankr size={23} />,
