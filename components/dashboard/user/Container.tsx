@@ -22,10 +22,10 @@ function UserTimesContainer({ userTimes }: UserTimesContainerProps) {
 	const [state, formAction] = useFormState(DeleteUserTime, {});
 	return (
 		<section className="flex justify-center flex-wrap gap-3">
-			{userTimes.map((time: userTimeType) => {
+			{userTimes.map((time: userTimeType, index: number) => {
                         const timeId = time._id.toString();
 				return (
-					<div className="w-[200px] h-fit py-3 px-2 flex-center flex-col bg-[#252525] rounded border-b-[1px] border-[#cc9900]">
+					<div key={index} className="w-[200px] h-fit py-3 px-2 flex-center flex-col bg-[#252525] rounded border-b-[1px] border-[#cc9900]">
 						<h2 className="text-[#f1f1f195]">
 							{time.solarDate}
 						</h2>
