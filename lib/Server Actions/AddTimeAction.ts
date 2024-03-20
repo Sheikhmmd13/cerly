@@ -1,7 +1,11 @@
 "use server";
 
 import moment from "jalali-moment";
-import { AddTimeToDb, AddTimeType } from "../dataBase/timeActions";
+import {
+	AddTimeToDb,
+	AddTimeType,
+	DeletePassedTime,
+} from "../dataBase/timeActions";
 import { errorState } from "@/components/Form/Signup";
 import { AddTimeValidation } from "../FormSchemas";
 import { revalidatePath } from "next/cache";
@@ -91,10 +95,11 @@ export async function AddTimeAction(prevState: any, formData: FormData) {
 		// delete passed date in db
 		const currentDate = new Date();
 		const EnteredDate = new Date(dbDate);
-		if(EnteredDate < currentDate) {
-			errors['date'] = {message: "این تاریخ گذشته است"}
+		if (currentDate !< EnteredDate) {
+			errors["date"] = { message: "این تاریخ گذشته است" };
 		}
 
+		await DeletePassedTime();
 		const hasErrors = Object.keys(errors).length !== 0;
 
 		if (!hasErrors) {

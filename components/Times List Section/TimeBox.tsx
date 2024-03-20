@@ -24,7 +24,9 @@ export function SubmitButton(props: SubmitButtonProps) {
 	return (
 		<motion.button
 			transition={{ type: "spring", duration: 0.35 }}
-			className={`${className} flex-center ${pending ? "button-disable" : ""}`}
+			className={`${className} flex-center ${
+				pending ? "button-disable" : ""
+			}`}
 			type="submit">
 			{title}
 			{pending && (
@@ -53,16 +55,21 @@ export function SubmitButton(props: SubmitButtonProps) {
 	);
 }
 
-const intialState: { message: string } = { message: "" };
+const intialState: { message: string, isError: boolean } = { message: "", isError: false };
 function TimeBox({ date, time, userId, index }: TimeBoxProps) {
 	const [state, TimeSubmitAction] = useFormState(UserGetTime, intialState);
+
 	const [isBooked, setIsBooked] = useState<boolean>(
-		userId.trim() === "" ? false : true,
+		userId.trim() !== "" ? true : false,
 	);
+
+	//animation
 	const [scope, animate] = useAnimate();
 	const isInView = useInView(scope);
 
 	useEffect(() => {
+		if (state.message.trim() !== "" && !state.isError) setIsBooked(true);
+
 		const showingElements = () => {
 			animate(
 				scope.current,
@@ -72,9 +79,7 @@ function TimeBox({ date, time, userId, index }: TimeBoxProps) {
 		};
 
 		if (isInView) showingElements();
-	}, [isInView]);
-
-	if(state.message.trim() !== "") setIsBooked(true)
+	}, [isInView, state.message]);
 
 	return (
 		<motion.section
@@ -111,7 +116,7 @@ function TimeBox({ date, time, userId, index }: TimeBoxProps) {
 				</form>
 			)}
 			{state.message.trim() !== "" && (
-				<p className="text-[11px] text-red-500">
+				<p className={`text-[11px] text-center mt-3 ${state.isError ? "text-red-500" : "text-green-500"}`}>
 					{state.message}
 				</p>
 			)}

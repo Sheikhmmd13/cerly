@@ -7,7 +7,7 @@ import { GetOneTimeByUserid } from "../dataBase/timeActions";
 import { revalidatePath } from "next/cache";
 
 export async function UserGetTime(prevState: any, formData: FormData) {
-	let errors: { message: string } = { message: "" };
+	let errors: { message: string, isError: boolean } = { message: "", isError: false };
 
 	const userCookie = await getCookies("user");
 	const date = formData.get("date") as string;
@@ -25,9 +25,12 @@ export async function UserGetTime(prevState: any, formData: FormData) {
 		const UserInfo = await CheckUserExistWithPhoneNum(phoneNum);
 		const userId = UserInfo!._id.toJSON();
 		const result = await GetOneTimeByUserid(userId, date, time);
+		errors = {message: "نوبت شما ثبت شد", isError: false}
+
+	}catch(err) {
+		errors = {message: "خطا دوباره امتحان کنید", isError: true}
 	} finally {
 		revalidatePath("/times-list");
-		errors = {message: "نوبت شما ثبت شد. لطفا صفحه را رفرش کنید"}
 		return errors;
 	}
 }
