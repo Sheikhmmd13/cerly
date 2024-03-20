@@ -48,6 +48,7 @@ function ServicesContainer({
 							categoryItem.services.map(
 								(service, index: number) => (
 									<motion.div
+										key={index}
 										initial={{
 											x: -100,
 											opacity: 0,
@@ -63,7 +64,6 @@ function ServicesContainer({
 												0.25,
 										}}>
 										<ServiceAdminCard
-											key={index}
 											service={
 												service
 											}
