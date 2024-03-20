@@ -1,5 +1,8 @@
+"use server"
+
 import { ObjectId } from "mongodb";
 import { CloseConnection, ConnectToCollection } from "..";
+import { revalidatePath } from "next/cache";
 
 export type AddTimeType = {
 	date: string;
@@ -72,5 +75,24 @@ export async function DeletePassedTime() {
 		console.log(err);
 	} finally {
 		CloseConnection();
+	}
+}
+
+export async function DeleteUserTime(prevState: any, formData: FormData) {
+	const timeId = formData.get("timeId") as string;
+	const TimeCollection = await ConnectToCollection("Times");
+
+	try {
+		await TimeCollection.findOneAndUpdate(
+			{ _id: new ObjectId(timeId) },
+			{ $set: { userId: "" } },
+		);
+	} catch (err) {
+		console.log(err);
+	} finally {
+		revalidatePath("/dashboard/user")
+		revalidatePath("/dashboard/admin/Times")
+		CloseConnection();
+		return {}
 	}
 }

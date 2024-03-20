@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(req: NextRequest) {
 	//protecting Admin Dashboard
 	const isLoggedIn =
-		req.cookies.get("Cerly_is__Auth")?.value === undefined
+		req.cookies.get("Cerly__is_Auth")?.value === undefined
 			? false
 			: true;
 	const isAdmin =
@@ -18,7 +18,7 @@ export async function middleware(req: NextRequest) {
 		return NextResponse.redirect(new URL("/auth/login", req.url));
 	}
 
-	if (!isLoggedIn && pathName.startsWith("/dashboard/user")) {
+	if (pathName.startsWith("/dashboard/user") && !isLoggedIn) {
 		return NextResponse.redirect(new URL("/auth/login", req.url));
 	}
 }

@@ -2,6 +2,7 @@
 
 import { ObjectId } from "mongodb";
 import { CloseConnection, ConnectToCollection } from "..";
+import { getAllTimes } from "../timeActions";
 
 export type CreateUserType = {
 	firstName: string;
@@ -54,6 +55,20 @@ export async function getUserInfo(userId: string) {
 	}
 	finally {
 		CloseConnection();
+	}
+}
+
+export async function getUserTimes(userInfo: {phoneNum: string, password: string}) {
+	const UsersCollection = await ConnectToCollection("users");
+	try {
+		const AllUserInfo = await UsersCollection.findOne({phoneNum: userInfo.phoneNum, password: userInfo.password})
+		const UserId = AllUserInfo?._id.toString();
+
+		const Times = await getAllTimes();
+	
+		return Times?.filter(time => time.userId === UserId);
+	} catch(err) {
+		console.log(err)
 	}
 }
 
